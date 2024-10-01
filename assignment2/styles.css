@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+}
+h1 {text-align: center; color: #4a5aec; 
+    margin: 0%; width: 100%; font-size: 75px;
+}
+#top {background-image: url(images/warped-keyboard.jpg);  background-size:cover;  
+    height: 200px;  width: 100%; padding-top: 25px; box-sizing:border-box; 
+    text-align: center; font-size:  40px;  position:fixed;  z-index:999}
+ul#nav {list-style-type: none;
+    font-size: 22px;
+    width: 100%;
+    padding: 0; margin: 0
+}
+ul#nav a {text-decoration:none; 
+    color: #4a5aec;
+    padding: 2px 0px;
+    width: 150px;  text-align: center;
+    display:inline-block 
+}
+ul#nav a:hover {color: #fff; background-color: #4a5aec}   
+ul#nav li {display: inline-block}
+
+@media (max-width:650px)
+{
+    ul#nav a {
+    width: 100px;   
+    }
+}
+
+@media (max-width:400px)
+{
+    ul#nav a {
+    padding: 2px 5px;
+    font-size: 15px; 
+    } 
+}
