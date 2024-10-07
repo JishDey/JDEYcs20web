@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title> JS extra credit </title>
+  </head>
+  <body>
+    <h1> JS extra credit </h1>
+    <script>
+         function problem1(){
+            for(i=40; i>=10; i-=2){
+                document.write(i + " ");
+            }
+         }
+         function problem2(){
+             sum = 0;
+             while(sum <= 20){
+                 sum += parseInt(prompt("add to number"));
+                 console.log(sum);
+             }
+             document.write(sum);
+         }
+         function problem3(){
+             sum = 0;
+             nums = [];
+             while(sum <= 20){
+                 newnum = parseInt(prompt("add to number"));
+                 sum += newnum
+                 nums.push(newnum);
+             }
+             document.write(nums);
+         }
+         function problem4(){
+             songs = []
+             songs["Hey Jude"] = "The Beatles";
+             songs["Smooth"] = "Santana";
+             songs["The Reaper"] = "Blue Oyster Cult";
+             songs["Yellow Submarine"] = "The Beatles";
+             songs["Instant Crush"] = "Daft Punk";
+             for(song in songs){
+                 document.write(song + " by: " + songs[song] + "</br>");
+             }
+         }
+         function problem5(){
+             songs = []
+             songs["Hey Jude"] = "The Beatles";
+             songs["Smooth"] = "Santana";
+             songs["The Reaper"] = "Blue Oyster Cult";
+             songs["Yellow Submarine"] = "The Beatles";
+             songs["Instant Crush"] = "Daft Punk";
+             band = prompt("Songs of which band");
+             for(song in songs){
+                 if(songs[song] == band){
+                     document.write(song + " by: " + songs[song] + "</br>");
+                 }
+             }
+         }
+         problem1();
+         document.write("</br>");
+         problem2();
+         document.write("</br>");
+         problem3();
+         document.write("</br>");
+         problem4();
+         document.write("</br>");
+         problem5();
+    </script>
+  </body>
+</html>
