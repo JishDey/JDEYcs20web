@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title> Joe's Hotdogs </title>
+  </head>
+  <body>
+    <h1> Fresh Boston-area Hotdogs! </h1>
+    <script>
+        const hotdogPrice = 4.80;
+        const friesPrice = 3.95;
+        const drinksPrice = 1.99;
+        function showMoney(moneyIn){
+            moneyIn *= 100;
+            moneyIn = Math.round(moneyIn);
+            moneyIn /= 100;
+            moneyStr = moneyIn.toString();
+            return moneyStr;
+        }
+        function subTotal(hdgs, fries, drinks){
+            fin = hotdogPrice * hdgs;
+            fin += drinksPrice * drinks;
+            fin += friesPrice * fries;
+            return fin;
+        }
+        function specialOffer(moneyIn){
+            if (moneyIn >= 25){
+                moneyIn *= 0.9;
+            }
+            return moneyIn;
+        }
+        function withTax(moneyIn){
+            return moneyIn * 1.0625;
+        }
+        numDogs = prompt("How many hot dogs?", 1);
+        numFries = prompt("How many fries?", 1);
+        numSoda = prompt("How many drinks?", 1);
+        orderSubtotal = subTotal(numDogs, numFries, numSoda);
+        console.log(orderSubtotal);
+        special = specialOffer(orderSubtotal);
+        console.log(special);
+        offer = withTax(special);
+        console.log(showMoney(offer));
+
+    </script>
+
+  </body>
+</html>
