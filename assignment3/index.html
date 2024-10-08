@@ -1,9 +1,28 @@
 <html>
   <head>
     <title> Joe's Hotdogs </title>
+    <style>
+        h1{
+            color: #d44110;
+            background-color: #D0EBE3;
+            width: 100%;  text-align: center;
+            margin : 0px;
+        }
+        h2{
+            color: #D0EBE3;
+            background-color: #d44110;
+            width: 100%;  text-align: center;
+            margin : 0px;
+            margin-bottom: 10px;
+        }
+        html{
+            font-size:20px;
+        }
+    </style>
   </head>
   <body>
-    <h1> Fresh Boston-area Hotdogs! </h1>
+    <h1> Joe's Hotdogs </h1>
+    <h2> Hotdogs, fries, sodas near you! </h2>
     <script>
         const hotdogPrice = 4.80;
         const friesPrice = 3.95;
@@ -34,11 +53,11 @@
         numFries = prompt("How many fries?", 1);
         numSoda = prompt("How many drinks?", 1);
         orderSubtotal = subTotal(numDogs, numFries, numSoda);
-        console.log(orderSubtotal);
-        special = specialOffer(orderSubtotal);
-        console.log(special);
+        document.write("Subtotal: $" + showMoney(orderSubtotal) + "<br\>");
+        special = specialOffer(showMoney(orderSubtotal));
+        document.write("Including special: $" + special + "<br\>");
         offer = withTax(special);
-        console.log(showMoney(offer));
+        document.write("Total (+ tax): $" + showMoney(offer) + "<br\>");
 
     </script>
 
