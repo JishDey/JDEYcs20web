@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <title> Tic-Tac-Toe </title>
+    <style>
+        div {
+            border: #000000;
+            border-style:solid;
+        }
+        div.gameinfo {
+            width: 350px;
+            text-align: center;
+            margin-top: 10;
+            margin-bottom: 10;
+            background-color: #000000;
+            color: #ffffff;
+        }
+        div.outersquare {
+            width:350px;
+        }
+        div.square {
+            display:inline-block;
+            height: 100px;
+            width: 100px;
+            margin:5;
+            font-size: 100px;
+            text-align: center;
+        }
+        div.square:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        h1 {
+            color: #01225c;
+        }
+    </style>
+  </head>
+  <body>
+    <h1> Tic-Tac-Toe! </h1>
+        <div class="gameinfo" id="turn" >Current Player: </div>
+        <div class="outersquare">
+            <script> 
+                const NUM_SQUARES = 9;
+                turnx = (Math.random() < 0.5);
+                marked = Array(9).fill(false);
+                moves = Array(9).fill('-');
+                turn = document.getElementById("turn");
+                turn.innerHTML = "Current Player:" + (turnx ? 'X' : 'O');
+                function handleSquares(id){
+                    alert(id.charAt(2));
+                    mark(id);
+                }
+                function mark(id){
+                    if(!marked[id.charAt(2)]){
+                        box = document.getElementById(id);
+                        box.innerHTML = turnx ? 'X' : 'O';
+                        moves[id.charAt(2)] = turnx ? 'X' : 'O';
+                        marked[id.charAt(2)] = true;
+                        turnx = !turnx;
+                        turn = document.getElementById("turn");
+                        turn.innerHTML = "Current Player:" + (turnx ? 'X' : 'O');
+                        checkWin();
+                    }
+                    console.log(moves);
+                }
+                function checkWin(){
+                    winConditions = [];
+                    for(i = 0; i < 3; i++){
+                        condvert = "";
+                        condhor = "";
+                        for(j = 0; j < 3; j++){
+                            condvert += moves[3*i + j]; 
+                            condhor += moves[3*j + i];
+                        }
+                        winConditions.push(condvert);
+                        winConditions.push(condhor);
+                    }
+                    diag = "" + moves[0] + moves[4] + moves[8];
+                    diagr = "" + moves[2] + moves[4] + moves[6];
+                    winConditions.push(diag);
+                    winConditions.push(diagr);
+                    console.log(winConditions);
+                }
+                function clear(){
+                    for (i=0; i<NUM_SQUARES; i++) {
+                        id = "sq"+i;
+                        square = document.getElementById(id);
+                        square.innerHTML = "&nbsp;";
+                    }
+                }
+                for (i=0; i<NUM_SQUARES; i++) {
+                    id = "sq"+i;
+                    document.write( "<div class='square' id='" + id + "' onclick='handleSquares(this.id)'> &nbsp; </div>" );
+                }
+            </script>
+        </div>
+        <div class="gameinfo" id="winner">[Player] wins!</div> 
+        <button onclick='window.clear()'>Start game</button>
+  </body>
+</html>
