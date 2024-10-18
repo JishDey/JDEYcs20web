@@ -45,12 +45,13 @@
                 moves = Array(9).fill('-');
                 turn = document.getElementById("turn");
                 turn.innerHTML = "Current Player:" + (turnx ? 'X' : 'O');
+                won = "";
                 function handleSquares(id){
                     alert(id.charAt(2));
                     mark(id);
                 }
                 function mark(id){
-                    if(!marked[id.charAt(2)]){
+                    if(!marked[id.charAt(2)] && won == ""){
                         box = document.getElementById(id);
                         box.innerHTML = turnx ? 'X' : 'O';
                         moves[id.charAt(2)] = turnx ? 'X' : 'O';
@@ -64,21 +65,43 @@
                 }
                 function checkWin(){
                     winConditions = [];
+                    draw = true;
                     for(i = 0; i < 3; i++){
                         condvert = "";
                         condhor = "";
                         for(j = 0; j < 3; j++){
                             condvert += moves[3*i + j]; 
                             condhor += moves[3*j + i];
+                            if(moves[3*i + j] == '-'){
+                                draw = false;
+                            }
                         }
                         winConditions.push(condvert);
                         winConditions.push(condhor);
+                    }
+                    if(draw){
+                        winner = "Nobody wins :(";
+                        document.getElementById("winner").innerHTML = "Nobody wins :(";
+                        return;
                     }
                     diag = "" + moves[0] + moves[4] + moves[8];
                     diagr = "" + moves[2] + moves[4] + moves[6];
                     winConditions.push(diag);
                     winConditions.push(diagr);
                     console.log(winConditions);
+                    readConditions(winConditions);
+                }
+                function readConditions(winConditions){
+                    for(i = 0; i < winConditions.length; i++){
+                        if(winConditions[i] == "XXX"){
+                            won='X';
+                            document.getElementById("winner").innerHTML = "X wins!";
+                        }
+                        if(winConditions[i] == "OOO"){
+                            won='O';
+                            document.getElementById("winner").innerHTML = "O wins!";
+                        }
+                    }
                 }
                 function clear(){
                     for (i=0; i<NUM_SQUARES; i++) {
@@ -86,6 +109,12 @@
                         square = document.getElementById(id);
                         square.innerHTML = "&nbsp;";
                     }
+                    turnx = (Math.random() < 0.5);
+                    marked = Array(9).fill(false);
+                    moves = Array(9).fill('-');
+                    turn = document.getElementById("turn");
+                    turn.innerHTML = "Current Player:" + (turnx ? 'X' : 'O');
+                    won = "";
                 }
                 for (i=0; i<NUM_SQUARES; i++) {
                     id = "sq"+i;
