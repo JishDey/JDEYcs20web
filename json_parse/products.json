@@ -1,0 +1,56 @@
+"products": [
+    {
+      "name" : "lumatone", 
+      "description" : "musical",
+      "price" :  4000,
+      "categories" : ["microtonal", "remappable", "midi"] 
+    },
+    {
+      "name" : "keytar", 
+      "description" : "musical",
+      "price" :  500,
+      "categories" : ["midi"] 
+    },
+    {
+      "name" : "ergodox", 
+      "description" : "typing",
+      "price" :  400,
+      "categories" : ["remappable", "ortholinear"] 
+    },
+    {
+      "name" : "maltron", 
+      "description" : "typing",
+      "price" :  300,
+      "categories" : ["remappable", "ortholinear"] 
+    },
+    {
+      "name" : "kyria", 
+      "description" : "typing",
+      "price" :  150,
+      "categories" : ["remappable", "ortholinear"] 
+    },
+    {
+      "name" : "corne", 
+      "description" : "typing",
+      "price" :  70,
+      "categories" : ["midi", "remappable"] 
+    },
+    {
+      "name" : "planck", 
+      "description" : "typing",
+      "price" :  50,
+      "categories" : ["midi", "remappable"] 
+    },
+    {
+      "name" : "roli seaboard", 
+      "description" : "musical",
+      "price" :  750,
+      "categories" : ["remappable", "midi", "pitch bend"] 
+    },
+    {
+      "name" : "expressive e osmse", 
+      "description" : "musical",
+      "price" :  1700,
+      "categories" : ["midi", "pitch bend"] 
+    },
+]
