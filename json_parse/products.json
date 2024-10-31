@@ -1,5 +1,5 @@
 {
-"products": [
+  "products": [
     {
       "name" : "lumatone", 
       "description" : "musical",
@@ -53,6 +53,6 @@
       "description" : "musical",
       "price" :  1700,
       "categories" : ["midi", "pitch bend"] 
-    },
-]
+    }
+  ]
 }
