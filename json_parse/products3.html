@@ -9,7 +9,7 @@
     }
     .desc {
       font-size: 16px;
-      color: #808080;
+      color: #000000;
     }
     .price {
       font-size: 18px;
@@ -22,12 +22,25 @@
   </style>
 </head>
 <body>
+<form onsubmit="handleSubmit(event)" id="keyform">
+    <select name="choice"> 
+        <option value="none">none</option>
+        <option value="microtonal">microtonal</option>
+        <option value="midi">midi</option>
+        <option value="ortholinear">ortholinear</option>
+        <option value="remappable">remappable</option>
+        <option value="pitch bend">pitchbend</option>
+    </select>
+    <button type="submit" value="Submit">filter</button>
+</form>
+  <div id="filteredproducts"></div>
+  <br/>
   <div id="allproducts"></div>
-  
   <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
           integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" 
           crossorigin="anonymous"></script>
   
+
   <script>
     function displayProduct(prodObj) {
       return `
@@ -36,8 +49,18 @@
           <div class='desc'>Description: ${prodObj.description}</div>
           <div class='price'>Price: $${prodObj.price}</div>
           <div class='categories'>Features: ${prodObj.categories}</div>
-        </div><br/>
-      `;
+        </div><br/>`;
+    }
+
+    function displayInCategory(prodObj, category){
+        let allNamesHtml = "Filtered list:<br/> <div class='product'>";
+        prodObj.products.forEach((product) => {
+            if(product.categories.includes(category)){
+                allNamesHtml += `<div class='name'>Name: ${product.name}</div>`;
+            }
+        }) 
+        allNamesHtml += "</div>";
+        $('#filteredproducts').html(allNamesHtml);
     }
 
     function displayProducts(prodObj) {
@@ -46,6 +69,14 @@
       allProductsHtml += displayProduct(product);
       });
       $('#allproducts').html(allProductsHtml);
+    }
+
+    function handleSubmit(event){
+        event.preventDefault();
+        const filterName = $('#keyform select[name="choice"]').val();
+        $.get("https://jishdey.github.io/JDEYcs20web/json_parse/products.json", (data) => {
+            displayInCategory(data, filterName);
+        });
     }
 
     $.get("https://jishdey.github.io/JDEYcs20web/json_parse/products.json", (data) => {
